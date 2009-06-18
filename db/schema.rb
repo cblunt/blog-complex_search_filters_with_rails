@@ -14,8 +14,9 @@ ActiveRecord::Schema.define(:version => 20090618114317) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "email_address"
     t.integer  "status"
-    t.boolean  "is_admin"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
