@@ -2,6 +2,13 @@
 
 <% form_tag users_path, :method => :get do %>
   <%= text_field_tag "search[terms]", params[:search][:terms] %>
+  <br />
+  
+  Only Admins <%= check_box_tag "search[admin]", true, params[:search][:admin] %>
+  <br />
+
+  Status: <%= select_tag "search[status]", options_for_select([["- All -", nil], ["Viewer", "1"], ["Member", "2"], ["Subscriber", "3"], ["Publisher", "4"], ["Editor", "5"]], params[:search][:status]) %>
+  <br />
   <%= submit_tag "Search" %>
 <% end %>
 
@@ -17,7 +24,7 @@
       <td><%= h [user.first_name, user.last_name].join(' ') %> </td>
       <td><%= h user.email_address %></td>
       <td><%= user.admin? ? 'Yes' : 'No' %></td>
-      <td><%= user.status %></td>
+      <td><%= label_for_status(user.status) %></td>
     </tr>
   <% end %>
 </table>
