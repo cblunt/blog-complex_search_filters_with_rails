@@ -4,12 +4,16 @@ The easiest way to obtain a copy of this code is to use git:
 
   git clone git://github.com/cblunt/blog-complex_search_filters_with_rails.git
 
+You might need to install some gems:
+
+  rake gems:install
+
 After cloning, install the ez_where (http://opensvn.csie.org/ezra/rails/plugins/dev/ez_where)
 plugin into your local copy:
 
   ruby script/plugin install http://opensvn.csie.org/ezra/rails/plugins/dev/ez_where
 
-Finally, set up a local config/database.yml file, e.g
+Set up a local config/database.yml file, e.g
 
   # config/database.yml
   development:
@@ -17,6 +21,11 @@ Finally, set up a local config/database.yml file, e.g
     database: db/development.sqlite3
     pool: 5
     timeout: 5000
+
+Finally, migrate and populate your database with:
+
+  rake db:migrate
+  rake db:populate:users
 
 == More info
 
